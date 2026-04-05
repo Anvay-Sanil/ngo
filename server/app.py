@@ -87,14 +87,17 @@ async def metadata():
 
 
 @app.post("/reset")
-async def reset(request: ResetRequest):
+async def reset(request: Optional[ResetRequest] = None):
     """Reset environment for a new episode."""
     env = _get_env()
     try:
+        task_name = request.task_name if request else "cost_hemorrhage"
+        seed = request.seed if request else None
+        episode_id = request.episode_id if request else None
         observation = env.reset(
-            seed=request.seed,
-            episode_id=request.episode_id,
-            task_name=request.task_name,
+            seed=seed,
+            episode_id=episode_id,
+            task_name=task_name,
         )
         return _serialize_observation(observation)
     except Exception as e:
