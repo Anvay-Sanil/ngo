@@ -290,8 +290,8 @@ def get_fallback_actions(task_name: str) -> List[Dict]:
                 "tool": "update_routing_rule",
                 "arguments": {
                     "field": "complexity_score",
-                    "operator": "lt",
-                    "value": "0.3",
+                    "operator": "le",
+                    "value": "0.35",
                     "target_model": "llama-3-8b-instruct",
                     "priority": 10,
                 },
@@ -300,8 +300,8 @@ def get_fallback_actions(task_name: str) -> List[Dict]:
                 "tool": "update_routing_rule",
                 "arguments": {
                     "field": "complexity_score",
-                    "operator": "lt",
-                    "value": "0.6",
+                    "operator": "le",
+                    "value": "0.85",
                     "target_model": "llama-3-70b",
                     "priority": 5,
                 },
