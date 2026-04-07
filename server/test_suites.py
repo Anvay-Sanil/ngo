@@ -295,9 +295,18 @@ TASK_GRADERS = {
 TASK_NAMES = list(TASK_GRADERS.keys())
 
 
+def _clamp_exclusive(score: float) -> float:
+    """Clamp score to the open interval (0, 1) — strictly between 0 and 1.
+
+    The hackathon grading platform rejects scores of exactly 0.0 or 1.0.
+    """
+    return round(min(0.9999, max(0.0001, score)), 4)
+
+
 def grade_task(task_name: str, config: GatewayConfig) -> Tuple[float, Dict]:
     """Run the grader for a specific task."""
     grader = TASK_GRADERS.get(task_name)
     if grader is None:
         raise ValueError(f"Unknown task: {task_name}. Must be one of {TASK_NAMES}")
-    return grader(config)
+    score, details = grader(config)
+    return _clamp_exclusive(score), details
