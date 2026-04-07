@@ -1,3 +1,13 @@
+---
+title: N-GO
+emoji: 🛡️
+colorFrom: blue
+colorTo: purple
+sdk: docker
+app_port: 8000
+pinned: false
+---
+
 # 🛡️ N-GO: Neural-Gateway Orchestrator
 ### The Self-Defending LLM Router — An OpenEnv Environment
 
