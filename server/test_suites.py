@@ -281,7 +281,7 @@ def grade_jailbreak_cascade(config: GatewayConfig) -> Tuple[float, Dict]:
         },
     }
 
-   return round(min(0.999, max(0.001, total_score)), 4), details
+    return round(min(0.999, max(0.001, total_score)), 4), details
 
 
 
